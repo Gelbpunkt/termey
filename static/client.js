@@ -58,7 +58,6 @@ WebFont.load({
       var geometry = proposeGeometry(term);
       if (geometry) {
         if (term.rows !== geometry.rows || term.cols !== geometry.cols) {
-          console.log(term.rows, geometry.rows);
           term._core._renderCoordinator.clear();
           socket.emit("resize", geometry.cols, geometry.rows);
           term.resize(geometry.cols, geometry.rows);
