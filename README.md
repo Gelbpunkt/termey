@@ -4,6 +4,14 @@ A web terminal.
 Allows users to use a terminal in the browser, just as if they were using SSH or a local terminal.
 Termey uses authorization via system users and pam, which adds a level of security
 
+## Features
+
+- Works with all modern browsers
+- On the go - no need to SSH
+- Uses xterm.js, therefore works with almost all applications, even vim and nano
+- Secure system login using pam
+- Configurable startup shell
+
 ## Screenshots
 
 ![Image 1](https://raw.githubusercontent.com/Gelbpunkt/termey/master/screenshots/termey1.png)
