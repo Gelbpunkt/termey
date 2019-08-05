@@ -103,16 +103,11 @@ io.on("connection", async function(socket) {
   }
 
   async function runShell(user, passwd) {
-    // Use current env
-    const env = Object.assign({}, process.env);
-    env["COLORTERM"] = "truecolor";
     // Spawn the pty
     var term = pty.spawn("su", ["-l", user], {
       name: "xterm-256color",
-      cols: 80,
+      cols: 80, // these will be resized anyways
       rows: 24,
-      // cwd: env.HOME,
-      // env: env,
       encoding: "utf8"
     });
 
