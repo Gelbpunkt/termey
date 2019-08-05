@@ -1,0 +1,32 @@
+{
+  "name": "termey",
+  "version": "1.0.0",
+  "description": "A terminal for browsers",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gelbpunkt/termey.git"
+  },
+  "keywords": [
+    "web",
+    "express",
+    "socketio",
+    "terminal"
+  ],
+  "author": "Jens Reidel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Gelbpunkt/termey/issues"
+  },
+  "homepage": "https://github.com/Gelbpunkt/termey#readme",
+  "dependencies": {
+    "authenticate-pam": "^1.0.2",
+    "express": "^4.17.1",
+    "node-pty": "^0.8.1",
+    "socket.io": "^2.2.0",
+    "xterm": "^3.14.5"
+  }
+}
