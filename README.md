@@ -4,6 +4,12 @@ A web terminal.
 Allows users to use a terminal in the browser, just as if they were using SSH or a local terminal.
 Termey uses authorization via system users and pam, which adds a level of security
 
+## Screenshots
+
+![Image 1](https://raw.githubusercontent.com/Gelbpunkt/termey/master/screenshots/termey1.png)
+
+![Image 2](https://raw.githubusercontent.com/Gelbpunkt/termey/master/screenshots/termey2.png)
+
 ## Installation
 
 ```sh
