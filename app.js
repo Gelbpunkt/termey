@@ -19,8 +19,24 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+function getIp(socket) {
+  if (config.behind_proxy) {
+    return socket.handshake.headers["x-forwarded-for"];
+  } else {
+    return socket.request.connection.remoteAddress;
+  }
+}
+
+// Banned IPs
+var banned = [];
+
 // Handle socketio connections
 io.on("connection", async function(socket) {
+  // Reject connection if they are banned
+  if (banned.indexOf(getIp(socket)) != -1) {
+    socket.disconnect(true);
+    return;
+  }
   // Greet the user
   const MAX_ATTEMPTS = config.max_login_attempts + 1;
   var attempt = 0;
@@ -35,6 +51,7 @@ io.on("connection", async function(socket) {
     attempt++;
     if (attempt == MAX_ATTEMPTS) {
       socket.emit("data", "\r\n\r\nToo many failures.");
+      banned.push(getIp(socket));
       return;
     }
 
@@ -124,6 +141,7 @@ io.on("connection", async function(socket) {
     // Terminal exit handler
     term.on("close", function() {
       term = null;
+      socket.disconnect(true);
     });
 
     // Kill terminal on disconnect

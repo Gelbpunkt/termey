@@ -82,5 +82,9 @@ WebFont.load({
     term.on("data", function(data) {
       socket.emit("data", data);
     });
+
+    socket.on("disconnect", function(reason) {
+      term.write("The server closed the connection.");
+    });
   }
 });

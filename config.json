@@ -1,4 +1,5 @@
 {
     "port": 7654,
-    "max_login_attempts": 3
+    "max_login_attempts": 3,
+    "behind_proxy": true
 }
