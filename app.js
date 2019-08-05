@@ -3,7 +3,6 @@
 var express = require("express");
 var http = require("http");
 var socketio = require("socket.io");
-var os = require("os");
 var pty = require("node-pty");
 var pam = require("authenticate-pam");
 var config = require("./config.json");
