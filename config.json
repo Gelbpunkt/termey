@@ -1,5 +1,4 @@
 {
-    "shell": "bash",
     "port": 7654,
     "max_login_attempts": 3
 }

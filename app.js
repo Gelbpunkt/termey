@@ -90,7 +90,7 @@ io.on("connection", async function(socket) {
     const env = Object.assign({}, process.env);
     env["COLORTERM"] = "truecolor";
     // Spawn the pty
-    var term = pty.spawn(config.shell, [], {
+    var term = pty.spawn("su", ["-l", user], {
       name: "xterm-256color",
       cols: 80,
       rows: 24,
@@ -98,12 +98,6 @@ io.on("connection", async function(socket) {
       // env: env,
       encoding: "utf8"
     });
-
-    term.on("data", data => {}); // dont buffer these commands
-    term.write(`exec su ${user}\r`);
-    term.write(`cd ~\r`);
-    await sleep(1000); // wait for commands end
-    term.removeAllListeners("data");
 
     // Handle xterm.js input
     socket.on("data", function(data) {
@@ -124,7 +118,7 @@ io.on("connection", async function(socket) {
       socket.emit("data", data);
     });
 
-    term.write("\r"); // force prompt
+    socket.emit("data", "\r\n"); // add a newline
     socket.emit("login"); // force resize to client sizes
 
     // Terminal exit handler
@@ -144,7 +138,5 @@ io.on("connection", async function(socket) {
 });
 
 server.listen(config.port, function() {
-  console.log(
-    `Termey listening on port ${config.port} and set to shell: ${config.shell}`
-  );
+  console.log(`Termey listening on port ${config.port}`);
 });
