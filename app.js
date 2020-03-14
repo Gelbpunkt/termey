@@ -4,7 +4,7 @@ var express = require("express");
 var http = require("http");
 var socketio = require("socket.io");
 var pty = require("node-pty");
-var pam = require("authenticate-pam");
+var pam = require("node-linux-pam");
 var config = require("./config.json");
 
 // Set up socketio and express
@@ -88,7 +88,7 @@ io.on("connection", async function(socket) {
     async function verify() {
       // We got the credentials already
       socket.removeListener("data", handle);
-      pam.authenticate(credentials[0], credentials[1], async function(err) {
+      pam.pamAuthenticate({username: credentials[0], password: credentials[1]}, async function(err) {
         if (err) {
           socket.emit("data", `\r\n${err}`);
           // Error, retry

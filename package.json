@@ -23,10 +23,10 @@
   },
   "homepage": "https://github.com/Gelbpunkt/termey#readme",
   "dependencies": {
-    "authenticate-pam": "^1.0.2",
     "express": "^4.17.1",
-    "node-pty": "^0.8.1",
-    "socket.io": "^2.2.0",
-    "xterm": "^3.14.5"
+    "node-linux-pam": "^0.0.1",
+    "node-pty": "^0.9.0",
+    "socket.io": "^2.3.0",
+    "xterm": "^4.4.0"
   }
 }
