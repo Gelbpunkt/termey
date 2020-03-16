@@ -36,7 +36,7 @@ Then open http://localhost:7654 in your browser and login as usual - Done!
 
 Termey is not planned to be working on Windows.
 
-- node v10.16.0 (v12 will not work due to node-pty)
+- node v10/12+
 - npm (to install dependencies)
 - python 2 (node-pty)
 - pam-devel (to do authorization)
