@@ -44,11 +44,11 @@ WebFont.load({
       var geometry = {
         cols: Math.floor(
           availableWidth /
-            term._core._renderCoordinator.dimensions.actualCellWidth
+            term._core._renderService.dimensions.actualCellWidth
         ),
         rows: Math.floor(
           availableHeight /
-            term._core._renderCoordinator.dimensions.actualCellHeight
+            term._core._renderService.dimensions.actualCellHeight
         )
       };
       return geometry;
@@ -58,7 +58,7 @@ WebFont.load({
       var geometry = proposeGeometry(term);
       if (geometry) {
         if (term.rows !== geometry.rows || term.cols !== geometry.cols) {
-          term._core._renderCoordinator.clear();
+          term._core._renderService.clear();
           socket.emit("resize", geometry.cols, geometry.rows);
           term.resize(geometry.cols, geometry.rows);
         }
@@ -79,7 +79,7 @@ WebFont.load({
       socket.emit("resize", term.cols, term.rows); // force a terminal resize when terminal is created
     });
 
-    term.on("data", function(data) {
+    term.onData(function(data) {
       socket.emit("data", data);
     });
 
